@@ -1,1 +1,32 @@
-# 371
+package ua.com.kisit.zemlyacov;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class lab2zemlyacov {
+    public static void main(String[] args) {
+        String[] validPhoneNumbers
+                = {"380505923502", "+380505923502", "+38 050 592 35 02",
+                "+38 (050) 592 35 02", "+38 (050) 592-35-02", "+38 (050) 592-3-502",
+                "(050) 592-35-02", "050 592 35 02", "050 592 35 02", "050 592 3502",
+                "050 592 3 502", "050-592-3-502", "+80 (50) 592 35 02", "380 (50) 592 35 02",
+                "+380 (50) 592 35 02", "+380 (50) 592 35 02", "+380 (50) 592-35-02", "+380 50 592-35-02",
+        };
+        String phoneNumberPattern = "^\\+?\\d{2,3}[\\s\\-]?+\\(?\\d{2,3}\\)?[\\s\\-]?\\d{3}[\\s\\-]?\\d{2}[\\s\\-]?+\\d++$";
+
+
+        Pattern p = Pattern.compile(phoneNumberPattern);
+
+
+        for (String phoneNumber : validPhoneNumbers) {
+            Matcher m = p.matcher(phoneNumber);
+            if (m.matches()) {
+                System.out.println(phoneNumber + "(nomer norm)");
+            } else {
+                System.out.println(phoneNumber + "(sho to tut ne tak)");
+            }
+
+        }
+    }
+}
+
